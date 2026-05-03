@@ -3,150 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camper Guide Multi-lang</title>
+    <title>Camper Manual</title>
     <style>
-        :root {
-            --dark-grey: #2f3640;
-            --accent-blue: #3498db;
-            --light-bg: #f5f6fa;
-        }
-
-        body { font-family: sans-serif; margin: 0; background-color: var(--light-bg); padding: 20px; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background: #f4f4f4; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; text-align: center; }
+        .language-picker { text-align: right; margin-bottom: 20px; }
+        select { padding: 5px; border-radius: 5px; }
         
-        /* Sprogvælger */
-        .lang-picker { text-align: right; margin-bottom: 20px; }
-        select { padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
-
-        h2 { color: var(--dark-grey); border-bottom: 2px solid #ddd; padding-bottom: 10px; }
-
-        /* Accordion */
+        /* Accordion styling */
         .accordion {
-            background-color: var(--dark-grey);
-            color: white;
-            padding: 18px;
-            width: 100%;
-            text-align: left;
-            border: none;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            font-size: 18px;
-            cursor: pointer;
+            background-color: #eee; color: #444; cursor: pointer; padding: 18px; width: 100%;
+            border: none; text-align: left; outline: none; font-size: 16px; transition: 0.4s;
+            margin-bottom: 5px; border-radius: 5px; display: flex; align-items: center;
         }
-
-        .accordion span.icon { margin-right: 15px; font-size: 22px; }
-        .active, .accordion:hover { background-color: var(--accent-blue); }
-
-        .panel { display: none; padding: 0 18px; background: white; border-radius: 0 0 8px 8px; margin-bottom: 15px; border-left: 4px solid var(--accent-blue); }
-        
-        /* Video cards */
-        .video-card { background: white; border-radius: 12px; padding: 15px; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .video-placeholder { width: 100%; aspect-ratio: 16/9; background: #e0e0e0; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #bdc3c7; }
+        .active, .accordion:hover { background-color: #ccc; }
+        .icon { margin-right: 15px; font-size: 20px; }
+        .panel { padding: 0 18px; display: none; background-color: white; overflow: hidden; border-left: 3px solid #ccc; margin-bottom: 10px; }
+        .video-section { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; }
     </style>
 </head>
 <body>
 
-    <div class="lang-picker">
-        <select onchange="changeLanguage(this.value)">
-            <option value="da">Dansk 🇩🇰</option>
-            <option value="en">English 🇬🇧</option>
-            <option value="de">Deutsch 🇩🇪</option>
-            <option value="fr">Français 🇫🇷</option>
-            <option value="es">Español 🇪🇸</option>
+<div class="container">
+    <div class="language-picker">
+        <select id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="da">Dansk</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="fr">Français</option>
+            <option value="es">Español</option>
         </select>
     </div>
 
     <h2 data-key="title-tech">🛠️ Teknisk Manual</h2>
 
-    <div id="main-content">
-        <!-- Varme -->
-        <button class="accordion"><span class="icon">🔥</span> <span data-key="heat">Varme</span></button>
-        <div class="panel"><p data-key="heat-desc">Indstil termostaten på panelet.</p></div>
+    <button class="accordion"><span class="icon">🔥</span> <span data-key="heat">Varme</span></button>
+    <div class="panel"><p data-key="heat-desc"></p></div>
 
-        <!-- Vand -->
-        <button class="accordion"><span class="icon">💧</span> <span data-key="water">Vand</span></button>
-        <div class="panel"><p data-key="water-desc">Fyld vand på udefra.</p></div>
+    <button class="accordion"><span class="icon">💧</span> <span data-key="water">Vand</span></button>
+    <div class="panel"><p data-key="water-desc"></p></div>
 
-        <!-- El -->
-        <button class="accordion"><span class="icon">⚡</span> <span data-key="el">El</span></button>
-        <div class="panel"><p data-key="el-desc">Tjek batteristatus på displayet.</p></div>
+    <button class="accordion"><span class="icon">⚡</span> <span data-key="el">El</span></button>
+    <div class="panel"><p data-key="el-desc"></p></div>
 
-        <!-- Gas (Nyt ikon) -->
-        <button class="accordion"><span class="icon">⚗️</span> <span data-key="gas">Gas</span></button>
-        <div class="panel"><p data-key="gas-desc">Luk altid for gassen under kørsel.</p></div>
+    <button class="accordion"><span class="icon">⛽</span> <span data-key="gas">Gas</span></button>
+    <div class="panel"><p data-key="gas-desc"></p></div>
 
-        <!-- Køleskab -->
-        <button class="accordion"><span class="icon">🧊</span> <span data-key="fridge">Køleskab</span></button>
-        <div class="panel"><p data-key="fridge-desc">Vælg kilde (12V/Gas/230V).</p></div>
+    <button class="accordion"><span class="icon">❄️</span> <span data-key="fridge">Køleskab</span></button>
+    <div class="panel"><p data-key="fridge-desc"></p></div>
 
-        <!-- Toilet -->
-        <button class="accordion"><span class="icon">🚽</span> <span data-key="toilet">Toilet</span></button>
-        <div class="panel"><p data-key="toilet-desc">Tøm kassetten ved markerede stationer.</p></div>
+    <button class="accordion"><span class="icon">🚽</span> <span data-key="toilet">Toilet</span></button>
+    <div class="panel"><p data-key="toilet-desc"></p></div>
 
-        <!-- Sikkerhed -->
-        <button class="accordion"><span class="icon">🛡️</span> <span data-key="safety">Sikkerhed</span></button>
-        <div class="panel"><p data-key="safety-desc">Brandslukker findes under sædet.</p></div>
+    <button class="accordion"><span class="icon">🛡️</span> <span data-key="safety">Sikkerhed</span></button>
+    <div class="panel"><p data-key="safety-desc"></p></div>
+
+    <button class="accordion"><span class="icon">🏁</span> <span data-key="return">Aflevering af bil</span></button>
+    <div class="panel"><p data-key="return-desc"></p></div>
+
+    <div class="video-section">
+        <h2 data-key="title-video">📺 Videoguider</h2>
+        <p data-key="video-comming">Video kommer snart...</p>
     </div>
+</div>
 
-    <h2 data-key="title-video">📺 Videoguider</h2>
-    <div class="video-card">
-        <div class="video-placeholder"><p data-key="video-comming">Video kommer snart...</p></div>
-    </div>
+<script>
+const translations = {
+    da: {
+        "title-tech": "🛠️ Teknisk Manual",
+        "heat": "Varme", "heat-desc": "Gasfyret tændes ved drejeknappen med diverse funktioner. Hvis du skal bruge varmt vand, skal det tændes 15 minutter før brug.",
+        "water": "Vand", "water-desc": "Ferskvandstanken (100 l) er fyldt ved udlevering, og vandet kan drikkes. Påfyldning sker udenfor. Gråvandstanken (100 l) tømmes under bilen på godkendte pladser. Gråvandstanken SKAL være tømt ved aflevering af bilen.",
+        "el": "El", "el-desc": "12V-stikket ved siden af TV'et skal være samlet for at TV og WIFI kører. Hvis routeren i skabet ikke lyser grønt, tryk på WPS-knappen nederst. 230V fungerer kun med tilsluttet landstrøm.",
+        "gas": "Gas", "gas-desc": "Gasflasken er placeret i skabet bagerst i bilen. Husk at lukke altid for gassen under kørsel, og den SKAL være lukket ombord på færger.",
+        "fridge": "Køleskab", "fridge-desc": "Energikilde vælges manuelt (Gas, 12V eller 230V). Ved landstrøm anbefales 230V. Ved parkering uden strøm anbefales Gas. 12V må kun bruges, når motoren kører.",
+        "toilet": "Toilet", "toilet-desc": "Toilettet skal tømmes på godkendte pladser. Efter tømning påfyldes 2 liter vand og kemi. Brug kun hurtigopløsende toiletpapir. Toilettet SKAL være tømt ved aflevering af bilen.",
+        "safety": "Sikkerhed", "safety-desc": "Ildslukker og førstehjælpskasse er i skabet over bordet. Gasalarm findes under bordet, og røgalarm er placeret ved døren.",
+        "return": "Aflevering af bil", "return-desc": "Dieseltanken skal være fyldt, og toilet samt gråvand skal være tømt inden aflevering. Ellers pålægges et gebyr på 500 kr. plus udgifter til brændstof.",
+        "title-video": "📺 Videoguider", "video-comming": "Video kommer snart..."
+    },
+    en: {
+        "title-tech": "🛠️ Technical Manual",
+        "heat": "Heating", "heat-desc": "Heater is operated via the control knob. Hot water must be turned on 15 min. before use.",
+        "water": "Water", "water-desc": "Fresh water (100 l) is potable. Grey water (100 l) must be emptied at approved sites and MUST be empty upon return.",
+        "el": "Electricity", "el-desc": "Connect 12V plug for TV/WIFI. If the router isn't green, press WPS. 230V requires shore power.",
+        "gas": "Gas", "gas-desc": "Cylinder is in the rear locker. Close gas while driving and MUST be closed on ferries.",
+        "fridge": "Fridge", "fridge-desc": "Manual selection. 230V for shore power, Gas for parking, 12V only while driving.",
+        "toilet": "Toilet", "toilet-desc": "Empty at approved sites. Use quick-dissolving paper. MUST be empty upon return.",
+        "safety": "Safety", "safety-desc": "Extinguisher/First aid in cabinet above table. Gas alarm under table, smoke alarm by door.",
+        "return": "Returning", "return-desc": "Diesel tank must be full. Toilet and grey water must be empty. Failure results in a 500 DKK fee + fuel costs.",
+        "title-video": "📺 Video Guides", "video-comming": "Video coming soon..."
+    },
+    de: {
+        "title-tech": "🛠️ Technisches Handbuch",
+        "heat": "Heizung", "heat-desc": "Heizung über Drehknopf bedienen. Warmwasser 15 Min. vor Gebrauch einschalten.",
+        "water": "Wasser", "water-desc": "Frischwasser (100 l) ist trinkbar. Grauwasser (100 l) an Fachstellen entleeren. MUSS bei Rückgabe leer sein.",
+        "el": "Elektrizität", "el-desc": "12V-Stecker für TV/WIFI anschließen. Wenn der Router nicht grün leuchtet, WPS drücken. 230V nur mit Landstrom.",
+        "gas": "Gas", "gas-desc": "Flasche im hinteren Fach. Gas beim Fahren und auf Fähren IMMER schließen.",
+        "fridge": "Kühlschrank", "fridge-desc": "Manuelle Wahl. 230V für Landstrom, Gas für Parken, 12V nur während der Fahrt.",
+        "toilet": "Toilette", "toilet-desc": "An Fachstellen entleeren. Schnelllösliches Papier nutzen. MUSS bei Rückgabe leer sein.",
+        "safety": "Sicherheit", "safety-desc": "Löscher/Erste Hilfe im Schrank über Tisch. Gasalarm unter Tisch, Rauchmelder an Tür.",
+        "return": "Fahrzeugrückgabe", "return-desc": "Dieseltank voll, Toilette/Grauwasser leer. Sonst 500 DKK Gebühr + Kraftstoffkosten.",
+        "title-video": "📺 Videoführer", "video-comming": "Video kommt bald..."
+    },
+    fr: {
+        "title-tech": "🛠️ Manuel Technique",
+        "heat": "Chauffage", "heat-desc": "Chauffage via bouton rotatif. Eau chaude 15 min avant usage.",
+        "water": "Eau", "water-desc": "Eau propre (100 l) potable. Eaux grises (100 l) à vider. DOIT être vide au retour.",
+        "el": "Électricité", "el-desc": "Prise 12V pour TV/WIFI. Si routeur pas vert, WPS. 230V nécessite courant de quai.",
+        "gas": "Gaz", "gas-desc": "Bouteille à l'arrière. Fermer gaz en roulant et sur les ferries.",
+        "fridge": "Frigo", "fridge-desc": "Sélection manuelle. 230V quai, Gaz parking, 12V en roulant.",
+        "toilet": "Toilettes", "toilet-desc": "Vider sur sites autorisés. Papier spécial requis. DOIT être vide au retour.",
+        "safety": "Sécurité", "safety-desc": "Extincteur/Secours au-dessus table. Alarme gaz sous table, fumée près porte.",
+        "return": "Restitution", "return-desc": "Diesel plein, toilettes/eaux grises vides. Sinon frais de 500 DKK + carburant.",
+        "title-video": "📺 Guides Vidéo", "video-comming": "Vidéo bientôt..."
+    },
+    es: {
+        "title-tech": "🛠️ Manual Técnico",
+        "heat": "Calefacción", "heat-desc": "Calentador vía mando giratorio. Agua caliente 15 min antes de usar.",
+        "water": "Agua", "water-desc": "Agua dulce (100 l) potable. Aguas grises (100 l) vaciar en sitios autorizados. DEBE estar vacío al devolver.",
+        "el": "Electricidad", "el-desc": "Enchufe 12V para TV/WIFI. Si router no verde, WPS. 230V solo toma tierra.",
+        "gas": "Gas", "gas-desc": "Bombona atrás. Cerrar gas al conducir y en ferris.",
+        "fridge": "Nevera", "fridge-desc": "Selección manual. 230V toma tierra, Gas parking, 12V conduciendo.",
+        "toilet": "Inodoro", "toilet-desc": "Vaciar en sitios autorizados. Papel rápido disolución. DEBE estar vacío al devolver.",
+        "safety": "Seguridad", "safety-desc": "Extintor/Botiquín sobre mesa. Alarma gas bajo mesa, humo en puerta.",
+        "return": "Devolución", "return-desc": "Diesel lleno, inodoro/aguas grises vacíos. Si no, 500 DKK + combustible.",
+        "title-video": "📺 Guías de Video", "video-comming": "Video próximamente..."
+    }
+};
 
-    <script>
-        const translations = {
-            da: {
-                "title-tech": "🛠️ Teknisk Manual", "heat": "Varme", "heat-desc": "Indstil termostaten på panelet.",
-                "water": "Vand", "water-desc": "Fyld vand på udefra.", "el": "El", "el-desc": "Tjek batteristatus på displayet.",
-                "gas": "Gas", "gas-desc": "Luk altid for gassen under kørsel.", "fridge": "Køleskab", 
-                "fridge-desc": "Vælg kilde (12V/Gas/230V).", "toilet": "Toilet", "toilet-desc": "Tøm kassetten.",
-                "safety": "Sikkerhed", "safety-desc": "Brandslukker under sædet.", "title-video": "📺 Videoguider", "video-comming": "Video kommer snart..."
-            },
-            en: {
-                "title-tech": "🛠️ Technical Manual", "heat": "Heating", "heat-desc": "Set the thermostat on the panel.",
-                "water": "Water", "water-desc": "Fill water from the outside.", "el": "Electricity", "el-desc": "Check battery status on display.",
-                "gas": "Gas", "gas-desc": "Always close the gas while driving.", "fridge": "Refrigerator", 
-                "fridge-desc": "Select source (12V/Gas/230V).", "toilet": "Toilet", "toilet-desc": "Empty the cassette.",
-                "safety": "Safety", "safety-desc": "Extinguisher under the seat.", "title-video": "📺 Video Guides", "video-comming": "Video coming soon..."
-            },
-            de: {
-                "title-tech": "🛠️ Technisches Handbuch", "heat": "Heizung", "heat-desc": "Thermostat am Panel einstellen.",
-                "water": "Wasser", "water-desc": "Wasser von außen auffüllen.", "el": "Elektrizität", "el-desc": "Batteriestatus am Display prüfen.",
-                "gas": "Gas", "gas-desc": "Gas während der Fahrt immer schließen.", "fridge": "Kühlschrank", 
-                "fridge-desc": "Quelle wählen (12V/Gas/230V).", "toilet": "Toilette", "toilet-desc": "Kassette leeren.",
-                "safety": "Sicherheit", "safety-desc": "Feuerlöscher unter dem Sitz.", "title-video": "📺 Videoführer", "video-comming": "Video kommt bald..."
-            },
-            fr: {
-                "title-tech": "🛠️ Manuel Technique", "heat": "Chauffage", "heat-desc": "Réglez le thermostat sur le panneau.",
-                "water": "Eau", "water-desc": "Remplir d'eau par l'extérieur.", "el": "Électricité", "el-desc": "Vérifier l'état de la batterie.",
-                "gas": "Gaz", "gas-desc": "Fermez toujours le gaz en conduisant.", "fridge": "Réfrigérateur", 
-                "fridge-desc": "Choisir la source (12V/Gaz/230V).", "toilet": "Toilettes", "toilet-desc": "Vider la cassette.",
-                "safety": "Sécurité", "safety-desc": "Extincteur sous le siège.", "title-video": "📺 Guides Vidéo", "video-comming": "Vidéo bientôt disponible..."
-            },
-            es: {
-                "title-tech": "🛠️ Manual Técnico", "heat": "Calefacción", "heat-desc": "Ajuste el termostato en el panel.",
-                "water": "Agua", "water-desc": "Llene de agua desde el exterior.", "el": "Electricidad", "el-desc": "Verifique el estado de la batería.",
-                "gas": "Gas", "gas-desc": "Cierre siempre el gas al conducir.", "fridge": "Refrigerador", 
-                "fridge-desc": "Seleccionar fuente (12V/Gas/230V).", "toilet": "Inodoro", "toilet-desc": "Vaciar el casete.",
-                "safety": "Seguridad", "safety-desc": "Extintor bajo el asiento.", "title-video": "📺 Guías de Video", "video-comming": "Video próximamente..."
-            }
-        };
-
-        function changeLanguage(lang) {
-            document.querySelectorAll('[data-key]').forEach(elem => {
-                const key = elem.getAttribute('data-key');
-                elem.textContent = translations[lang][key];
-            });
+function changeLanguage(lang) {
+    document.querySelectorAll("[data-key]").forEach(elem => {
+        const key = elem.getAttribute("data-key");
+        if (translations[lang][key]) {
+            elem.textContent = translations[lang][key];
         }
+    });
+}
 
-        // Accordion script
-        document.querySelectorAll('.accordion').forEach(button => {
-            button.addEventListener('click', () => {
-                const panel = button.nextElementSibling;
-                panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-    </script>
+// Initialisering af accordion-funktionalitet
+const acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        panel.style.display = (panel.style.display === "block") ? "none" : "block";
+    });
+}
+
+// Sæt standardsprog ved start
+changeLanguage('da');
+</script>
+
 </body>
 </html>
