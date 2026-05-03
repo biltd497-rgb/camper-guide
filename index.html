@@ -11,10 +11,17 @@
             --light-bg: #f5f6fa;
         }
 
-        body { font-family: sans-serif; margin: 0; background-color: var(--light-bg); padding: 20px; }
-        h2 { color: var(--dark-grey); }
+        body { 
+            font-family: -apple-system, sans-serif; 
+            margin: 0; 
+            background-color: var(--light-bg); 
+            padding: 20px;
+            line-height: 1.6;
+        }
 
-        /* Accordion styling */
+        h2 { color: var(--dark-grey); margin-top: 30px; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+
+        /* --- ACCORDION STYLING (TEKNIK) --- */
         .accordion {
             background-color: var(--dark-grey);
             color: white;
@@ -31,6 +38,7 @@
             display: flex;
             align-items: center;
         }
+
         .accordion span { margin-right: 15px; font-size: 22px; }
         .active, .accordion:hover { background-color: var(--accent-blue); }
 
@@ -44,9 +52,15 @@
             border-left: 4px solid var(--accent-blue);
         }
 
-        /* Video styling */
-        .video-section { margin-top: 40px; border-top: 2px solid #ddd; padding-top: 20px; }
-        .video-card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        /* --- VIDEO STYLING --- */
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
         .video-placeholder {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -62,8 +76,8 @@
 </head>
 <body>
 
-    <!-- TEKNIK SEKTION -->
-    <div id="tech-section">
+    <!-- SEKTION 1: TEKNISK MANUAL -->
+    <div id="tech-area">
         <h2>🛠️ Teknisk Manual</h2>
         
         <button class="accordion"><span>🔥</span> Varme</button>
@@ -88,20 +102,20 @@
         <div class="panel"><p>Brandslukker findes ved passagersædet. Tjek røgalarmens batteri hver måned.</p></div>
     </div>
 
-    <!-- VIDEO SEKTION -->
-    <div id="video-section" class="video-section">
+    <!-- SEKTION 2: VIDEOGUIDER -->
+    <div id="video-area">
         <h2>📺 Videoguider</h2>
         <div class="video-card">
             <h3>Klargøring af vognen</h3>
             <div class="video-placeholder">
-                <p>🎥 Video er undervejs...</p>
+                <p>🎥 Video uploades snart...</p>
             </div>
-            <p>Se hvordan du gør vognen klar til natten.</p>
+            <p>En hurtig guide til hvordan du klargør camperen til tur.</p>
         </div>
     </div>
 
     <script>
-        // JavaScript til Accordion
+        // JavaScript til at styre Accordion-funktionaliteten
         var acc = document.getElementsByClassName("accordion");
         for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
