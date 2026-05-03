@@ -2,89 +2,121 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <!-- Sikrer at appen fylder hele skærmen på mobilen uden zoom-fejl -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camper Vejledning</title>
     <style>
+        /* CSS Variabler for nem tilpasning */
         :root {
-            --hovedfarve: #2c3e50; /* Mørkeblå */
-            --knapfarve: #3498db;  /* Lyseblå */
-            --baggrund: #f4f7f6;
+            --dark-grey: #2f3640;
+            --accent-blue: #3498db;
+            --light-bg: #f5f6fa;
+            --text-color: #2f3640;
         }
 
-        body { font-family: sans-serif; margin: 0; background: var(--baggrund); }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background: var(--light-bg); color: var(--text-color); }
 
-        /* Menu-navigation */
-        .nav-menu {
+        /* Navigation */
+        nav {
             display: flex;
-            background: var(--hovedfarve);
+            background: var(--dark-grey);
             position: sticky;
             top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .nav-btn {
+        .tab-button {
             flex: 1;
-            padding: 20px 10px;
+            padding: 15px 5px;
             border: none;
             background: none;
-            color: white;
-            font-size: 16px;
+            color: #dcdde1;
+            font-size: 14px;
+            font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
         }
 
-        .nav-btn.active {
-            border-bottom: 4px solid var(--knapfarve);
+        .tab-button.active {
+            color: white;
+            border-bottom: 4px solid var(--accent-blue);
         }
 
-        /* Indholds-sektioner */
-        .section { display: none; padding: 25px; }
-        .section.active { display: block; }
+        /* Sektioner */
+        .page { display: none; padding: 20px; animation: fadeIn 0.3s ease-in; }
+        .page.active { display: block; }
 
-        .placeholder-box {
-            background: #ddd;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            border: 2px dashed #999;
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 { margin-top: 0; color: var(--dark-grey); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav-menu">
-        <button class="nav-btn active" onclick="visSide('start')">Hjem</button>
-        <button class="nav-btn" onclick="visSide('teknik')">Teknik</button>
-        <button class="nav-btn" onclick="visSide('video')">Videoer</button>
+    <nav>
+        <button class="tab-button active" onclick="showPage('home')">HJEM</button>
+        <button class="tab-button" onclick="showPage('tech')">TEKNIK</button>
+        <button class="tab-button" onclick="showPage('video')">VIDEO</button>
     </nav>
 
-    <div id="start" class="section active">
-        <h1>Velkommen</h1>
-        <p>Scan QR-koden i bilen for altid at have manualen ved hånden.</p>
+    <!-- Hjem Sektion -->
+    <div id="home" class="page active">
+        <div class="card">
+            <h2>Velkommen til din Camper</h2>
+            <p>Her finder du alt den nødvendige information om bilens systemer.</p>
+            <p>Brug menuen øverst for at navigere.</p>
+        </div>
     </div>
 
-    <div id="teknik" class="section">
-        <h1>Tekniske instruktioner</h1>
-        <p>Her kommer din tekst om batterier og vedligeholdelse.</p>
+    <!-- Teknik Sektion -->
+    <div id="tech" class="page">
+        <div class="card">
+            <h2>Strømstyring (12V)</h2>
+            <p>Vejledning til dine lithium-batterier og opladning under kørsel.</p>
+        </div>
+        <div class="card">
+            <h2>Vand & Varme</h2>
+            <p>Instruktioner til påfyldning af vand og betjening af varmelegeme.</p>
+        </div>
     </div>
 
-    <div id="video" class="section">
-        <h1>Videoguider</h1>
-        <div class="placeholder-box">Video kommer snart...</div>
+    <!-- Video Sektion -->
+    <div id="video" class="page">
+        <div class="card">
+            <h2>Videoguider</h2>
+            <p>Videoer bliver uploadet her snart.</p>
+        </div>
     </div>
 
     <script>
-        function visSide(id) {
-            // Find alle sektioner og skjul dem
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            // Find alle knapper og fjern deres aktive markering
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            
-            // Vis den valgte sektion og marker knappen
-            document.getElementById(id).classList.add('active');
+        function showPage(pageId) {
+            // Skjul alle sider
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // Fjern aktiv-status fra alle knapper
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(b => b.classList.remove('active'));
+
+            // Vis den valgte side og aktiver knappen
+            document.getElementById(pageId).classList.add('active');
             event.currentTarget.classList.add('active');
+            
+            // Scroll til toppen når der skiftes side
+            window.scrollTo(0, 0);
         }
     </script>
+
 </body>
 </html>
