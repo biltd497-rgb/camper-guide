@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camper Vejledning</title>
+    <title>Camper Guide Multi-lang</title>
     <style>
         :root {
             --dark-grey: #2f3640;
@@ -11,124 +11,142 @@
             --light-bg: #f5f6fa;
         }
 
-        body { 
-            font-family: -apple-system, sans-serif; 
-            margin: 0; 
-            background-color: var(--light-bg); 
-            padding: 20px;
-            line-height: 1.6;
-        }
+        body { font-family: sans-serif; margin: 0; background-color: var(--light-bg); padding: 20px; }
+        
+        /* Sprogvælger */
+        .lang-picker { text-align: right; margin-bottom: 20px; }
+        select { padding: 10px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; }
 
-        h2 { color: var(--dark-grey); margin-top: 30px; border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+        h2 { color: var(--dark-grey); border-bottom: 2px solid #ddd; padding-bottom: 10px; }
 
-        /* --- ACCORDION STYLING (TEKNIK) --- */
+        /* Accordion */
         .accordion {
             background-color: var(--dark-grey);
             color: white;
-            cursor: pointer;
             padding: 18px;
             width: 100%;
             text-align: left;
             border: none;
-            outline: none;
-            transition: 0.4s;
             border-radius: 8px;
             margin-bottom: 8px;
-            font-size: 18px;
             display: flex;
             align-items: center;
+            font-size: 18px;
+            cursor: pointer;
         }
 
-        .accordion span { margin-right: 15px; font-size: 22px; }
+        .accordion span.icon { margin-right: 15px; font-size: 22px; }
         .active, .accordion:hover { background-color: var(--accent-blue); }
 
-        .panel {
-            padding: 0 18px;
-            background-color: white;
-            display: none;
-            overflow: hidden;
-            border-radius: 0 0 8px 8px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--accent-blue);
-        }
-
-        /* --- VIDEO STYLING --- */
-        .video-card {
-            background: white;
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            border: 2px dashed #bdc3c7;
-            color: #7f8c8d;
-        }
+        .panel { display: none; padding: 0 18px; background: white; border-radius: 0 0 8px 8px; margin-bottom: 15px; border-left: 4px solid var(--accent-blue); }
+        
+        /* Video cards */
+        .video-card { background: white; border-radius: 12px; padding: 15px; margin-top: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .video-placeholder { width: 100%; aspect-ratio: 16/9; background: #e0e0e0; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px dashed #bdc3c7; }
     </style>
 </head>
 <body>
 
-    <!-- SEKTION 1: TEKNISK MANUAL -->
-    <div id="tech-area">
-        <h2>🛠️ Teknisk Manual</h2>
-        
-        <button class="accordion"><span>🔥</span> Varme</button>
-        <div class="panel"><p>Indstil ønsket temperatur på kontrolpanelet. Sørg for at gasflasken er åben.</p></div>
-
-        <button class="accordion"><span>💧</span> Vand</button>
-        <div class="panel"><p>Påfyld vand i tanken udefra. Tøm spildevand ved at åbne ventilen under vognen.</p></div>
-
-        <button class="accordion"><span>⚡</span> El</button>
-        <div class="panel"><p>Overvåg batteristatus på displayet. Ved landstrøm lades batteriet automatisk.</p></div>
-
-        <button class="accordion"><span>⛽</span> Gas</button>
-        <div class="panel"><p>Husk at lukke for gassen under kørsel. Tjek jævnligt slangerne for utætheder.</p></div>
-
-        <button class="accordion"><span>🧊</span> Køleskab</button>
-        <div class="panel"><p>Vælg energikilde (12V/Gas/230V). Hold døren låst under kørsel.</p></div>
-
-        <button class="accordion"><span>🚽</span> Toilet</button>
-        <div class="panel"><p>Brug sanitærvæske i kassetten. Tøm kun på godkendte tømmestationer.</p></div>
-
-        <button class="accordion"><span>🛡️</span> Sikkerhed</button>
-        <div class="panel"><p>Brandslukker findes ved passagersædet. Tjek røgalarmens batteri hver måned.</p></div>
+    <div class="lang-picker">
+        <select onchange="changeLanguage(this.value)">
+            <option value="da">Dansk 🇩🇰</option>
+            <option value="en">English 🇬🇧</option>
+            <option value="de">Deutsch 🇩🇪</option>
+            <option value="fr">Français 🇫🇷</option>
+            <option value="es">Español 🇪🇸</option>
+        </select>
     </div>
 
-    <!-- SEKTION 2: VIDEOGUIDER -->
-    <div id="video-area">
-        <h2>📺 Videoguider</h2>
-        <div class="video-card">
-            <h3>Klargøring af vognen</h3>
-            <div class="video-placeholder">
-                <p>🎥 Video uploades snart...</p>
-            </div>
-            <p>En hurtig guide til hvordan du klargør camperen til tur.</p>
-        </div>
+    <h2 data-key="title-tech">🛠️ Teknisk Manual</h2>
+
+    <div id="main-content">
+        <!-- Varme -->
+        <button class="accordion"><span class="icon">🔥</span> <span data-key="heat">Varme</span></button>
+        <div class="panel"><p data-key="heat-desc">Indstil termostaten på panelet.</p></div>
+
+        <!-- Vand -->
+        <button class="accordion"><span class="icon">💧</span> <span data-key="water">Vand</span></button>
+        <div class="panel"><p data-key="water-desc">Fyld vand på udefra.</p></div>
+
+        <!-- El -->
+        <button class="accordion"><span class="icon">⚡</span> <span data-key="el">El</span></button>
+        <div class="panel"><p data-key="el-desc">Tjek batteristatus på displayet.</p></div>
+
+        <!-- Gas (Nyt ikon) -->
+        <button class="accordion"><span class="icon">⚗️</span> <span data-key="gas">Gas</span></button>
+        <div class="panel"><p data-key="gas-desc">Luk altid for gassen under kørsel.</p></div>
+
+        <!-- Køleskab -->
+        <button class="accordion"><span class="icon">🧊</span> <span data-key="fridge">Køleskab</span></button>
+        <div class="panel"><p data-key="fridge-desc">Vælg kilde (12V/Gas/230V).</p></div>
+
+        <!-- Toilet -->
+        <button class="accordion"><span class="icon">🚽</span> <span data-key="toilet">Toilet</span></button>
+        <div class="panel"><p data-key="toilet-desc">Tøm kassetten ved markerede stationer.</p></div>
+
+        <!-- Sikkerhed -->
+        <button class="accordion"><span class="icon">🛡️</span> <span data-key="safety">Sikkerhed</span></button>
+        <div class="panel"><p data-key="safety-desc">Brandslukker findes under sædet.</p></div>
+    </div>
+
+    <h2 data-key="title-video">📺 Videoguider</h2>
+    <div class="video-card">
+        <div class="video-placeholder"><p data-key="video-comming">Video kommer snart...</p></div>
     </div>
 
     <script>
-        // JavaScript til at styre Accordion-funktionaliteten
-        var acc = document.getElementsByClassName("accordion");
-        for (var i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
+        const translations = {
+            da: {
+                "title-tech": "🛠️ Teknisk Manual", "heat": "Varme", "heat-desc": "Indstil termostaten på panelet.",
+                "water": "Vand", "water-desc": "Fyld vand på udefra.", "el": "El", "el-desc": "Tjek batteristatus på displayet.",
+                "gas": "Gas", "gas-desc": "Luk altid for gassen under kørsel.", "fridge": "Køleskab", 
+                "fridge-desc": "Vælg kilde (12V/Gas/230V).", "toilet": "Toilet", "toilet-desc": "Tøm kassetten.",
+                "safety": "Sikkerhed", "safety-desc": "Brandslukker under sædet.", "title-video": "📺 Videoguider", "video-comming": "Video kommer snart..."
+            },
+            en: {
+                "title-tech": "🛠️ Technical Manual", "heat": "Heating", "heat-desc": "Set the thermostat on the panel.",
+                "water": "Water", "water-desc": "Fill water from the outside.", "el": "Electricity", "el-desc": "Check battery status on display.",
+                "gas": "Gas", "gas-desc": "Always close the gas while driving.", "fridge": "Refrigerator", 
+                "fridge-desc": "Select source (12V/Gas/230V).", "toilet": "Toilet", "toilet-desc": "Empty the cassette.",
+                "safety": "Safety", "safety-desc": "Extinguisher under the seat.", "title-video": "📺 Video Guides", "video-comming": "Video coming soon..."
+            },
+            de: {
+                "title-tech": "🛠️ Technisches Handbuch", "heat": "Heizung", "heat-desc": "Thermostat am Panel einstellen.",
+                "water": "Wasser", "water-desc": "Wasser von außen auffüllen.", "el": "Elektrizität", "el-desc": "Batteriestatus am Display prüfen.",
+                "gas": "Gas", "gas-desc": "Gas während der Fahrt immer schließen.", "fridge": "Kühlschrank", 
+                "fridge-desc": "Quelle wählen (12V/Gas/230V).", "toilet": "Toilette", "toilet-desc": "Kassette leeren.",
+                "safety": "Sicherheit", "safety-desc": "Feuerlöscher unter dem Sitz.", "title-video": "📺 Videoführer", "video-comming": "Video kommt bald..."
+            },
+            fr: {
+                "title-tech": "🛠️ Manuel Technique", "heat": "Chauffage", "heat-desc": "Réglez le thermostat sur le panneau.",
+                "water": "Eau", "water-desc": "Remplir d'eau par l'extérieur.", "el": "Électricité", "el-desc": "Vérifier l'état de la batterie.",
+                "gas": "Gaz", "gas-desc": "Fermez toujours le gaz en conduisant.", "fridge": "Réfrigérateur", 
+                "fridge-desc": "Choisir la source (12V/Gaz/230V).", "toilet": "Toilettes", "toilet-desc": "Vider la cassette.",
+                "safety": "Sécurité", "safety-desc": "Extincteur sous le siège.", "title-video": "📺 Guides Vidéo", "video-comming": "Vidéo bientôt disponible..."
+            },
+            es: {
+                "title-tech": "🛠️ Manual Técnico", "heat": "Calefacción", "heat-desc": "Ajuste el termostato en el panel.",
+                "water": "Agua", "water-desc": "Llene de agua desde el exterior.", "el": "Electricidad", "el-desc": "Verifique el estado de la batería.",
+                "gas": "Gas", "gas-desc": "Cierre siempre el gas al conducir.", "fridge": "Refrigerador", 
+                "fridge-desc": "Seleccionar fuente (12V/Gas/230V).", "toilet": "Inodoro", "toilet-desc": "Vaciar el casete.",
+                "safety": "Seguridad", "safety-desc": "Extintor bajo el asiento.", "title-video": "📺 Guías de Video", "video-comming": "Video próximamente..."
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                elem.textContent = translations[lang][key];
             });
         }
-    </script>
 
+        // Accordion script
+        document.querySelectorAll('.accordion').forEach(button => {
+            button.addEventListener('click', () => {
+                const panel = button.nextElementSibling;
+                panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
 </body>
 </html>
