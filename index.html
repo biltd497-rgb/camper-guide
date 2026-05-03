@@ -5,20 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camper Vejledning</title>
     <style>
-        /* Grundlæggende styling */
         :root {
             --dark-grey: #2f3640;
             --accent-blue: #3498db;
             --light-bg: #f5f6fa;
         }
 
-        body { 
-            font-family: sans-serif; 
-            margin: 0; 
-            background-color: var(--light-bg); 
-            padding: 20px;
-        }
-
+        body { font-family: sans-serif; margin: 0; background-color: var(--light-bg); padding: 20px; }
         h2 { color: var(--dark-grey); }
 
         /* Accordion styling */
@@ -38,9 +31,7 @@
             display: flex;
             align-items: center;
         }
-
         .accordion span { margin-right: 15px; font-size: 22px; }
-
         .active, .accordion:hover { background-color: var(--accent-blue); }
 
         .panel {
@@ -52,51 +43,65 @@
             margin-bottom: 15px;
             border-left: 4px solid var(--accent-blue);
         }
-        
-        .panel p { padding: 15px 0; line-height: 1.6; }
+
+        /* Video styling */
+        .video-section { margin-top: 40px; border-top: 2px solid #ddd; padding-top: 20px; }
+        .video-card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 2px dashed #bdc3c7;
+            color: #7f8c8d;
+        }
     </style>
 </head>
 <body>
 
-    <h2>Teknisk Manual</h2>
-    
-    <button class="accordion"><span>🔥</span> Varme</button>
-    <div class="panel">
-        <p>Indstil ønsket temperatur på kontrolpanelet. Sørg for at gasflasken er åben.</p>
+    <!-- TEKNIK SEKTION -->
+    <div id="tech-section">
+        <h2>🛠️ Teknisk Manual</h2>
+        
+        <button class="accordion"><span>🔥</span> Varme</button>
+        <div class="panel"><p>Indstil ønsket temperatur på kontrolpanelet. Sørg for at gasflasken er åben.</p></div>
+
+        <button class="accordion"><span>💧</span> Vand</button>
+        <div class="panel"><p>Påfyld vand i tanken udefra. Tøm spildevand ved at åbne ventilen under vognen.</p></div>
+
+        <button class="accordion"><span>⚡</span> El</button>
+        <div class="panel"><p>Overvåg batteristatus på displayet. Ved landstrøm lades batteriet automatisk.</p></div>
+
+        <button class="accordion"><span>⛽</span> Gas</button>
+        <div class="panel"><p>Husk at lukke for gassen under kørsel. Tjek jævnligt slangerne for utætheder.</p></div>
+
+        <button class="accordion"><span>🧊</span> Køleskab</button>
+        <div class="panel"><p>Vælg energikilde (12V/Gas/230V). Hold døren låst under kørsel.</p></div>
+
+        <button class="accordion"><span>🚽</span> Toilet</button>
+        <div class="panel"><p>Brug sanitærvæske i kassetten. Tøm kun på godkendte tømmestationer.</p></div>
+
+        <button class="accordion"><span>🛡️</span> Sikkerhed</button>
+        <div class="panel"><p>Brandslukker findes ved passagersædet. Tjek røgalarmens batteri hver måned.</p></div>
     </div>
 
-    <button class="accordion"><span>💧</span> Vand</button>
-    <div class="panel">
-        <p>Påfyld vand i tanken udefra. Tøm spildevand ved at åbne ventilen under vognen.</p>
-    </div>
-
-    <button class="accordion"><span>⚡</span> El</button>
-    <div class="panel">
-        <p>Overvåg batteristatus på displayet. Ved landstrøm lades batteriet automatisk.</p>
-    </div>
-
-    <button class="accordion"><span>⛽</span> Gas</button>
-    <div class="panel">
-        <p>Husk at lukke for gassen under kørsel. Tjek jævnligt slangerne for utætheder.</p>
-    </div>
-
-    <button class="accordion"><span>🧊</span> Køleskab</button>
-    <div class="panel">
-        <p>Vælg energikilde (12V/Gas/230V). Hold døren låst under kørsel.</p>
-    </div>
-
-    <button class="accordion"><span>🚽</span> Toilet</button>
-    <div class="panel">
-        <p>Brug sanitærvæske i kassetten. Tøm kun på godkendte tømmestationer.</p>
-    </div>
-
-    <button class="accordion"><span>🛡️</span> Sikkerhed</button>
-    <div class="panel">
-        <p>Brandslukker findes ved passagersædet. Tjek røgalarmens batteri hver måned.</p>
+    <!-- VIDEO SEKTION -->
+    <div id="video-section" class="video-section">
+        <h2>📺 Videoguider</h2>
+        <div class="video-card">
+            <h3>Klargøring af vognen</h3>
+            <div class="video-placeholder">
+                <p>🎥 Video er undervejs...</p>
+            </div>
+            <p>Se hvordan du gør vognen klar til natten.</p>
+        </div>
     </div>
 
     <script>
-        // JavaScript til at styre åbne/lukke funktionen
+        // JavaScript til Accordion
         var acc = document.getElementsByClassName("accordion");
         for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
