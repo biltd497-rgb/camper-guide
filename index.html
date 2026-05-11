@@ -11,7 +11,6 @@
         .language-picker { text-align: right; margin-bottom: 20px; }
         select { padding: 5px; border-radius: 5px; }
         
-        /* Accordion styling */
         .accordion {
             background-color: #eee; color: #444; cursor: pointer; padding: 18px; width: 100%;
             border: none; text-align: left; outline: none; font-size: 16px; transition: 0.4s;
@@ -47,7 +46,7 @@
     <button class="accordion"><span class="icon">⚡</span> <span data-key="el">El</span></button>
     <div class="panel"><p data-key="el-desc"></p></div>
 
-    <button class="accordion"><span class="icon">⛽</span> <span data-key="gas">Gas</span></button>
+    <button class="accordion"><span class="icon">🧪</span> <span data-key="gas">Gas</span></button>
     <div class="panel"><p data-key="gas-desc"></p></div>
 
     <button class="accordion"><span class="icon">❄️</span> <span data-key="fridge">Køleskab</span></button>
@@ -75,11 +74,11 @@ const translations = {
         "heat": "Varme", "heat-desc": "Gasfyret tændes ved drejeknappen med diverse funktioner. Hvis du skal bruge varmt vand, skal det tændes 15 minutter før brug.",
         "water": "Vand", "water-desc": "Ferskvandstanken (100 l) er fyldt ved udlevering, og vandet kan drikkes. Påfyldning sker udenfor. Gråvandstanken (100 l) tømmes under bilen på godkendte pladser. Gråvandstanken SKAL være tømt ved aflevering af bilen.",
         "el": "El", "el-desc": "12V-stikket ved siden af TV'et skal være samlet for at TV og WIFI kører. Hvis routeren i skabet ikke lyser grønt, tryk på WPS-knappen nederst. 230V fungerer kun med tilsluttet landstrøm.",
-        "gas": "Gas", "gas-desc": "Gasflasken er placeret i skabet bagerst i bilen. Husk at lukke altid for gassen under kørsel, og den SKAL være lukket ombord på færger.",
+        "gas": "Gas", "gas-desc": "Gasflasken er placeret i skabet bagerst i bilen. Gassen SKAL være lukket ombord på færger.",
         "fridge": "Køleskab", "fridge-desc": "Energikilde vælges manuelt (Gas, 12V eller 230V). Ved landstrøm anbefales 230V. Ved parkering uden strøm anbefales Gas. 12V må kun bruges, når motoren kører.",
         "toilet": "Toilet", "toilet-desc": "Toilettet skal tømmes på godkendte pladser. Efter tømning påfyldes 2 liter vand og kemi. Brug kun hurtigopløsende toiletpapir. Toilettet SKAL være tømt ved aflevering af bilen.",
         "safety": "Sikkerhed", "safety-desc": "Ildslukker og førstehjælpskasse er i skabet over bordet. Gasalarm findes under bordet, og røgalarm er placeret ved døren.",
-        "return": "Aflevering af bil", "return-desc": "Dieseltanken skal være fyldt, og toilet samt gråvand skal være tømt inden aflevering. Ellers pålægges et gebyr på 500 kr. plus udgifter til brændstof.",
+        "return": "Aflevering af bil", "return-desc": "Dieseltanken skal være fyldt, og toilet samt gråvand skal være tømt inden aflevering. Ellers pålægges et gebyr på 300 kr. plus udgifter til brændstof.",
         "title-video": "📺 Videoguider", "video-comming": "Video kommer snart..."
     },
     en: {
@@ -87,11 +86,11 @@ const translations = {
         "heat": "Heating", "heat-desc": "Heater is operated via the control knob. Hot water must be turned on 15 min. before use.",
         "water": "Water", "water-desc": "Fresh water (100 l) is potable. Grey water (100 l) must be emptied at approved sites and MUST be empty upon return.",
         "el": "Electricity", "el-desc": "Connect 12V plug for TV/WIFI. If the router isn't green, press WPS. 230V requires shore power.",
-        "gas": "Gas", "gas-desc": "Cylinder is in the rear locker. Close gas while driving and MUST be closed on ferries.",
+        "gas": "Gas", "gas-desc": "Gas cylinder is in the rear locker. Gas MUST be closed while on board ferries.",
         "fridge": "Fridge", "fridge-desc": "Manual selection. 230V for shore power, Gas for parking, 12V only while driving.",
         "toilet": "Toilet", "toilet-desc": "Empty at approved sites. Use quick-dissolving paper. MUST be empty upon return.",
         "safety": "Safety", "safety-desc": "Extinguisher/First aid in cabinet above table. Gas alarm under table, smoke alarm by door.",
-        "return": "Returning", "return-desc": "Diesel tank must be full. Toilet and grey water must be empty. Failure results in a 500 DKK fee + fuel costs.",
+        "return": "Returning", "return-desc": "Diesel tank must be full. Toilet and grey water must be empty. Failure results in a 300 DKK fee + fuel costs.",
         "title-video": "📺 Video Guides", "video-comming": "Video coming soon..."
     },
     de: {
@@ -99,11 +98,11 @@ const translations = {
         "heat": "Heizung", "heat-desc": "Heizung über Drehknopf bedienen. Warmwasser 15 Min. vor Gebrauch einschalten.",
         "water": "Wasser", "water-desc": "Frischwasser (100 l) ist trinkbar. Grauwasser (100 l) an Fachstellen entleeren. MUSS bei Rückgabe leer sein.",
         "el": "Elektrizität", "el-desc": "12V-Stecker für TV/WIFI anschließen. Wenn der Router nicht grün leuchtet, WPS drücken. 230V nur mit Landstrom.",
-        "gas": "Gas", "gas-desc": "Flasche im hinteren Fach. Gas beim Fahren und auf Fähren IMMER schließen.",
+        "gas": "Gas", "gas-desc": "Gasflasche im hinteren Fach. Gas MUSS an Bord von Fähren geschlossen sein.",
         "fridge": "Kühlschrank", "fridge-desc": "Manuelle Wahl. 230V für Landstrom, Gas für Parken, 12V nur während der Fahrt.",
         "toilet": "Toilette", "toilet-desc": "An Fachstellen entleeren. Schnelllösliches Papier nutzen. MUSS bei Rückgabe leer sein.",
         "safety": "Sicherheit", "safety-desc": "Löscher/Erste Hilfe im Schrank über Tisch. Gasalarm unter Tisch, Rauchmelder an Tür.",
-        "return": "Fahrzeugrückgabe", "return-desc": "Dieseltank voll, Toilette/Grauwasser leer. Sonst 500 DKK Gebühr + Kraftstoffkosten.",
+        "return": "Fahrzeugrückgabe", "return-desc": "Dieseltank voll, Toilette/Grauwasser leer. Sonst 300 DKK Gebühr + Kraftstoffkosten.",
         "title-video": "📺 Videoführer", "video-comming": "Video kommt bald..."
     },
     fr: {
@@ -111,11 +110,11 @@ const translations = {
         "heat": "Chauffage", "heat-desc": "Chauffage via bouton rotatif. Eau chaude 15 min avant usage.",
         "water": "Eau", "water-desc": "Eau propre (100 l) potable. Eaux grises (100 l) à vider. DOIT être vide au retour.",
         "el": "Électricité", "el-desc": "Prise 12V pour TV/WIFI. Si routeur pas vert, WPS. 230V nécessite courant de quai.",
-        "gas": "Gaz", "gas-desc": "Bouteille à l'arrière. Fermer gaz en roulant et sur les ferries.",
+        "gas": "Gaz", "gas-desc": "Bouteille à l'arrière. Le gaz DOIT être fermé à bord des ferries.",
         "fridge": "Frigo", "fridge-desc": "Sélection manuelle. 230V quai, Gaz parking, 12V en roulant.",
         "toilet": "Toilettes", "toilet-desc": "Vider sur sites autorisés. Papier spécial requis. DOIT être vide au retour.",
         "safety": "Sécurité", "safety-desc": "Extincteur/Secours au-dessus table. Alarme gaz sous table, fumée près porte.",
-        "return": "Restitution", "return-desc": "Diesel plein, toilettes/eaux grises vides. Sinon frais de 500 DKK + carburant.",
+        "return": "Restitution", "return-desc": "Diesel plein, toilettes/eaux grises vides. Sinon frais de 300 DKK + carburant.",
         "title-video": "📺 Guides Vidéo", "video-comming": "Vidéo bientôt..."
     },
     es: {
@@ -123,11 +122,11 @@ const translations = {
         "heat": "Calefacción", "heat-desc": "Calentador vía mando giratorio. Agua caliente 15 min antes de usar.",
         "water": "Agua", "water-desc": "Agua dulce (100 l) potable. Aguas grises (100 l) vaciar en sitios autorizados. DEBE estar vacío al devolver.",
         "el": "Electricidad", "el-desc": "Enchufe 12V para TV/WIFI. Si router no verde, WPS. 230V solo toma tierra.",
-        "gas": "Gas", "gas-desc": "Bombona atrás. Cerrar gas al conducir y en ferris.",
+        "gas": "Gas", "gas-desc": "Bombona atrás. El gas DEBE estar cerrado a bordo de los ferris.",
         "fridge": "Nevera", "fridge-desc": "Selección manual. 230V toma tierra, Gas parking, 12V conduciendo.",
         "toilet": "Inodoro", "toilet-desc": "Vaciar en sitios autorizados. Papel rápido disolución. DEBE estar vacío al devolver.",
         "safety": "Seguridad", "safety-desc": "Extintor/Botiquín sobre mesa. Alarma gas bajo mesa, humo en puerta.",
-        "return": "Devolución", "return-desc": "Diesel lleno, inodoro/aguas grises vacíos. Si no, 500 DKK + combustible.",
+        "return": "Devolución", "return-desc": "Diesel lleno, inodoro/aguas grises vacíos. Si no, 300 DKK + combustible.",
         "title-video": "📺 Guías de Video", "video-comming": "Video próximamente..."
     }
 };
@@ -141,7 +140,6 @@ function changeLanguage(lang) {
     });
 }
 
-// Initialisering af accordion-funktionalitet
 const acc = document.getElementsByClassName("accordion");
 for (let i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
@@ -151,7 +149,6 @@ for (let i = 0; i < acc.length; i++) {
     });
 }
 
-// Sæt standardsprog ved start
 changeLanguage('da');
 </script>
 
