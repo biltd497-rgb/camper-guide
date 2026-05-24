@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camper Manual</title>
+    <title>Camper Manual Pro</title>
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background: #f4f4f4; }
         .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
         h2 { color: #333; text-align: center; }
         .language-picker { text-align: right; margin-bottom: 20px; }
-        select { padding: 5px; border-radius: 5px; }
+        select { padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px; width: 100%; max-width: 150px; }
         
         .accordion {
             background-color: #eee; color: #444; cursor: pointer; padding: 18px; width: 100%;
             border: none; text-align: left; outline: none; font-size: 16px; transition: 0.4s;
-            margin-bottom: 5px; border-radius: 5px; display: flex; align-items: center;
+            margin-bottom: 5px; border-radius: 5px; display: flex; align-items: center; font-weight: bold;
         }
         .active, .accordion:hover { background-color: #ccc; }
         .icon { margin-right: 15px; font-size: 20px; }
         .panel { padding: 0 18px; display: none; background-color: white; overflow: hidden; border-left: 3px solid #ccc; margin-bottom: 10px; }
-        .video-section { margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px; }
+        
+        .video-wrapper {
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+            max-width: 100%; background: #000; border-radius: 8px; margin: 15px 0;
+        }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     </style>
 </head>
 <body>
@@ -37,33 +42,60 @@
 
     <h2 data-key="title-tech">🛠️ Teknisk Manual</h2>
 
+    <!-- Varme -->
     <button class="accordion"><span class="icon">🔥</span> <span data-key="heat">Varme</span></button>
-    <div class="panel"><p data-key="heat-desc"></p></div>
+    <div class="panel">
+        <p data-key="heat-desc"></p>
+        <div class="video-wrapper"><iframe id="video-heat" src="" frameborder="0" allowfullscreen></iframe></div>
+    </div>
 
+    <!-- Vand -->
     <button class="accordion"><span class="icon">💧</span> <span data-key="water">Vand</span></button>
-    <div class="panel"><p data-key="water-desc"></p></div>
+    <div class="panel">
+        <p data-key="water-desc"></p>
+        <div class="video-wrapper"><iframe id="video-water" src="" frameborder="0" allowfullscreen></iframe></div>
+    </div>
 
+    <!-- El -->
     <button class="accordion"><span class="icon">⚡</span> <span data-key="el">El</span></button>
-    <div class="panel"><p data-key="el-desc"></p></div>
+    <div class="panel">
+        <p data-key="el-desc"></p>
+        <div class="video-wrapper"><iframe id="video-el" src="" frameborder="0" allowfullscreen></iframe></div>
+    </div>
 
+    <!-- Gas -->
     <button class="accordion"><span class="icon">🧪</span> <span data-key="gas">Gas</span></button>
-    <div class="panel"><p data-key="gas-desc"></p></div>
+    <div class="panel">
+        <p data-key="gas-desc"></p>
+        <div class="video-wrapper"><iframe id="video-gas" src="" frameborder="0" allowfullscreen></iframe></div>
+    </div>
 
+    <!-- Køleskab -->
     <button class="accordion"><span class="icon">❄️</span> <span data-key="fridge">Køleskab</span></button>
-    <div class="panel"><p data-key="fridge-desc"></p></div>
+    <div class="panel">
+        <p data-key="fridge-desc"></p>
+        <div class="video-wrapper"><iframe id="video-fridge" src="" frameborder="0" allowfullscreen></iframe></div>
+    </div>
 
+    <!-- Toilet -->
     <button class="accordion"><span class="icon">🚽</span> <span data-key="toilet">Toilet</span></button>
-    <div class="panel"><p data-key="toilet-desc"></p></div>
+    <div class="panel">
+        <p data-key="toilet-desc"></p>
+        <div class="video-wrapper"><iframe id="video-toilet" src="" frameborder="0" allowfullscreen></iframe></div>
+    </div>
 
+    <!-- Sikkerhed -->
     <button class="accordion"><span class="icon">🛡️</span> <span data-key="safety">Sikkerhed</span></button>
-    <div class="panel"><p data-key="safety-desc"></p></div>
+    <div class="panel">
+        <p data-key="safety-desc"></p>
+        <div class="video-wrapper"><iframe id="video-safety" src="" frameborder="0" allowfullscreen></iframe></div>
+    </div>
 
+    <!-- Aflevering -->
     <button class="accordion"><span class="icon">🏁</span> <span data-key="return">Aflevering af bil</span></button>
-    <div class="panel"><p data-key="return-desc"></p></div>
-
-    <div class="video-section">
-        <h2 data-key="title-video">📺 Videoguider</h2>
-        <p data-key="video-comming">Video kommer snart...</p>
+    <div class="panel">
+        <p data-key="return-desc"></p>
+        <div class="video-wrapper"><iframe id="video-return" src="" frameborder="0" allowfullscreen></iframe></div>
     </div>
 </div>
 
@@ -71,73 +103,110 @@
 const translations = {
     da: {
         "title-tech": "🛠️ Teknisk Manual",
-        "heat": "Varme", "heat-desc": "Gasfyret tændes ved drejeknappen med diverse funktioner. Hvis du skal bruge varmt vand, skal det tændes 15 minutter før brug.",
-        "water": "Vand", "water-desc": "Ferskvandstanken (100 l) er fyldt ved udlevering, og vandet kan drikkes. Påfyldning sker udenfor. Gråvandstanken (100 l) tømmes under bilen på godkendte pladser. Gråvandstanken SKAL være tømt ved aflevering af bilen.",
-        "el": "El", "el-desc": "12V-stikket ved siden af TV'et skal være samlet for at TV og WIFI kører. Hvis routeren i skabet ikke lyser grønt, tryk på WPS-knappen nederst. 230V fungerer kun med tilsluttet landstrøm.",
-        "gas": "Gas", "gas-desc": "Gasflasken er placeret i skabet bagerst i bilen. Gassen SKAL være lukket ombord på færger.",
-        "fridge": "Køleskab", "fridge-desc": "Energikilde vælges manuelt (Gas, 12V eller 230V). Ved landstrøm anbefales 230V. Ved parkering uden strøm anbefales Gas. 12V må kun bruges, når motoren kører.",
-        "toilet": "Toilet", "toilet-desc": "Toilettet skal tømmes på godkendte pladser. Efter tømning påfyldes 2 liter vand og kemi. Brug kun hurtigopløsende toiletpapir. Toilettet SKAL være tømt ved aflevering af bilen.",
-        "safety": "Sikkerhed", "safety-desc": "Ildslukker og førstehjælpskasse er i skabet over bordet. Gasalarm findes under bordet, og røgalarm er placeret ved døren.",
-        "return": "Aflevering af bil", "return-desc": "Dieseltanken skal være fyldt, og toilet samt gråvand skal være tømt inden aflevering. Ellers pålægges et gebyr på 300 kr. plus udgifter til brændstof.",
-        "title-video": "📺 Videoguider", "video-comming": "Video kommer snart..."
+        "heat": "Varme", "heat-desc": "Gasfyret tændes ved drejeknappen. Varmt vand tændes 15 min. før brug.",
+        "water": "Vand", "water-desc": "Ferskvandstanken (100 l) er fyldt ved udlevering. Gråvandstanken (100 l) SKAL være tømt ved aflevering.",
+        "el": "El", "el-desc": "12V-stik ved TV skal være samlet for WIFI/TV. Tryk WPS hvis router ikke lyser grønt. 230V kræver landstrøm.",
+        "gas": "Gas", "gas-desc": "Gasflasken er placeret i skabet bagerst. Gassen SKAL være lukket ombord på færger.",
+        "fridge": "Køleskab", "fridge-desc": "Vælg kilde manuelt. 230V anbefales ved landstrøm. 12V må kun bruges når motoren kører.",
+        "toilet": "Toilet", "toilet-desc": "Tømmes på godkendte pladser. Efter tømning påfyldes 2 l vand og kemi. SKAL være tømt ved aflevering.",
+        "safety": "Sikkerhed", "safety-desc": "Ildslukker og førstehjælp er i skabet over bordet. Gasalarm findes under bordet.",
+        "return": "Aflevering", "return-desc": "Dieseltanken skal være fyldt, toilet og gråvand tømt. Ellers gebyr på 300 kr. + brændstof.",
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
+        "v-safety": "", "v-return": ""
     },
     en: {
         "title-tech": "🛠️ Technical Manual",
-        "heat": "Heating", "heat-desc": "Heater is operated via the control knob. Hot water must be turned on 15 min. before use.",
-        "water": "Water", "water-desc": "Fresh water (100 l) is potable. Grey water (100 l) must be emptied at approved sites and MUST be empty upon return.",
-        "el": "Electricity", "el-desc": "Connect 12V plug for TV/WIFI. If the router isn't green, press WPS. 230V requires shore power.",
-        "gas": "Gas", "gas-desc": "Gas cylinder is in the rear locker. Gas MUST be closed while on board ferries.",
-        "fridge": "Fridge", "fridge-desc": "Manual selection. 230V for shore power, Gas for parking, 12V only while driving.",
-        "toilet": "Toilet", "toilet-desc": "Empty at approved sites. Use quick-dissolving paper. MUST be empty upon return.",
-        "safety": "Safety", "safety-desc": "Extinguisher/First aid in cabinet above table. Gas alarm under table, smoke alarm by door.",
-        "return": "Returning", "return-desc": "Diesel tank must be full. Toilet and grey water must be empty. Failure results in a 300 DKK fee + fuel costs.",
-        "title-video": "📺 Video Guides", "video-comming": "Video coming soon..."
+        "heat": "Heating", "heat-desc": "Heater via control knob. Hot water 15 min. before use.",
+        "water": "Water", "water-desc": "Fresh water tank is full. Grey water tank MUST be empty upon return.",
+        "el": "Electricity", "el-desc": "12V plug for TV/WIFI. Press WPS if not green. 230V needs shore power.",
+        "gas": "Gas", "gas-desc": "Cylinder in rear locker. Gas MUST be closed on ferries.",
+        "fridge": "Fridge", "fridge-desc": "Manual select. 230V for shore power. 12V only while driving.",
+        "toilet": "Toilet", "toilet-desc": "Empty at approved sites. Add chemicals after emptying. MUST be empty upon return.",
+        "safety": "Safety", "safety-desc": "Extinguisher above table. Gas alarm under table.",
+        "return": "Returning", "return-desc": "Diesel tank full, tanks empty. Fee 300 DKK + fuel costs.",
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
+        "v-safety": "", "v-return": ""
     },
     de: {
         "title-tech": "🛠️ Technisches Handbuch",
-        "heat": "Heizung", "heat-desc": "Heizung über Drehknopf bedienen. Warmwasser 15 Min. vor Gebrauch einschalten.",
-        "water": "Wasser", "water-desc": "Frischwasser (100 l) ist trinkbar. Grauwasser (100 l) an Fachstellen entleeren. MUSS bei Rückgabe leer sein.",
-        "el": "Elektrizität", "el-desc": "12V-Stecker für TV/WIFI anschließen. Wenn der Router nicht grün leuchtet, WPS drücken. 230V nur mit Landstrom.",
-        "gas": "Gas", "gas-desc": "Gasflasche im hinteren Fach. Gas MUSS an Bord von Fähren geschlossen sein.",
-        "fridge": "Kühlschrank", "fridge-desc": "Manuelle Wahl. 230V für Landstrom, Gas für Parken, 12V nur während der Fahrt.",
-        "toilet": "Toilette", "toilet-desc": "An Fachstellen entleeren. Schnelllösliches Papier nutzen. MUSS bei Rückgabe leer sein.",
-        "safety": "Sicherheit", "safety-desc": "Löscher/Erste Hilfe im Schrank über Tisch. Gasalarm unter Tisch, Rauchmelder an Tür.",
-        "return": "Fahrzeugrückgabe", "return-desc": "Dieseltank voll, Toilette/Grauwasser leer. Sonst 300 DKK Gebühr + Kraftstoffkosten.",
-        "title-video": "📺 Videoführer", "video-comming": "Video kommt bald..."
+        "heat": "Heizung", "heat-desc": "Heizung über Drehknopf. Warmwasser 15 Min. vor Gebrauch.",
+        "water": "Wasser", "water-desc": "Frischwassertank voll. Grauwassertank MUSS bei Rückgabe leer sein.",
+        "el": "Elektrizität", "el-desc": "12V-Stecker für TV/WIFI. 230V nur mit Landstrom.",
+        "gas": "Gas", "gas-desc": "Gasflasche im Heck. MUSS auf Fähren geschlossen sein.",
+        "fridge": "Kühlschrank", "fridge-desc": "Manuelle Wahl. 230V empfohlen. 12V nur während der Fahrt.",
+        "toilet": "Toilette", "toilet-desc": "An Fachstellen entleeren. MUSS bei Rückgabe leer sein.",
+        "safety": "Sicherheit", "safety-desc": "Löscher im Schrank. Gasalarm unter dem Tisch.",
+        "return": "Rückgabe", "return-desc": "Dieseltank voll, Tanks leer. Gebühr 300 DKK + Kraftstoff.",
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
+        "v-safety": "", "v-return": ""
     },
     fr: {
         "title-tech": "🛠️ Manuel Technique",
-        "heat": "Chauffage", "heat-desc": "Chauffage via bouton rotatif. Eau chaude 15 min avant usage.",
-        "water": "Eau", "water-desc": "Eau propre (100 l) potable. Eaux grises (100 l) à vider. DOIT être vide au retour.",
-        "el": "Électricité", "el-desc": "Prise 12V pour TV/WIFI. Si routeur pas vert, WPS. 230V nécessite courant de quai.",
-        "gas": "Gaz", "gas-desc": "Bouteille à l'arrière. Le gaz DOIT être fermé à bord des ferries.",
-        "fridge": "Frigo", "fridge-desc": "Sélection manuelle. 230V quai, Gaz parking, 12V en roulant.",
-        "toilet": "Toilettes", "toilet-desc": "Vider sur sites autorisés. Papier spécial requis. DOIT être vide au retour.",
-        "safety": "Sécurité", "safety-desc": "Extincteur/Secours au-dessus table. Alarme gaz sous table, fumée près porte.",
-        "return": "Restitution", "return-desc": "Diesel plein, toilettes/eaux grises vides. Sinon frais de 300 DKK + carburant.",
-        "title-video": "📺 Guides Vidéo", "video-comming": "Vidéo bientôt..."
+        "heat": "Chauffage", "heat-desc": "Chauffage via bouton. Eau chaude 15 min avant usage.",
+        "water": "Eau", "water-desc": "Eau propre plein. Eaux grises DOIT être vide au retour.",
+        "el": "Électricité", "el-desc": "Prise 12V pour TV/WIFI. 230V nécessite courant de quai.",
+        "gas": "Gas", "gas-desc": "Bouteille à l'arrière. Fermer sur les ferries.",
+        "fridge": "Frigo", "fridge-desc": "Sélection manuelle. 230V recommandé. 12V en roulant.",
+        "toilet": "Toilettes", "toilet-desc": "Vider sur sites autorisés. DOIT être vide au retour.",
+        "safety": "Sécurité", "safety-desc": "Extincteur au-dessus table. Alarme gaz sous table.",
+        "return": "Restitution", "return-desc": "Diesel plein, réservoirs vides. Frais 300 DKK + carburant.",
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
+        "v-safety": "", "v-return": ""
     },
     es: {
         "title-tech": "🛠️ Manual Técnico",
-        "heat": "Calefacción", "heat-desc": "Calentador vía mando giratorio. Agua caliente 15 min antes de usar.",
-        "water": "Agua", "water-desc": "Agua dulce (100 l) potable. Aguas grises (100 l) vaciar en sitios autorizados. DEBE estar vacío al devolver.",
-        "el": "Electricidad", "el-desc": "Enchufe 12V para TV/WIFI. Si router no verde, WPS. 230V solo toma tierra.",
-        "gas": "Gas", "gas-desc": "Bombona atrás. El gas DEBE estar cerrado a bordo de los ferris.",
-        "fridge": "Nevera", "fridge-desc": "Selección manual. 230V toma tierra, Gas parking, 12V conduciendo.",
-        "toilet": "Inodoro", "toilet-desc": "Vaciar en sitios autorizados. Papel rápido disolución. DEBE estar vacío al devolver.",
-        "safety": "Seguridad", "safety-desc": "Extintor/Botiquín sobre mesa. Alarma gas bajo mesa, humo en puerta.",
-        "return": "Devolución", "return-desc": "Diesel lleno, inodoro/aguas grises vacíos. Si no, 300 DKK + combustible.",
-        "title-video": "📺 Guías de Video", "video-comming": "Video próximamente..."
+        "heat": "Calefacción", "heat-desc": "Calentador via mando. Agua caliente 15 min antes.",
+        "water": "Agua", "water-desc": "Agua dulce lleno. Aguas grises DEBE estar vacío al devolver.",
+        "el": "Electricidad", "el-desc": "12V para TV/WIFI. 230V solo toma tierra.",
+        "gas": "Gas", "gas-desc": "Bombona atrás. Cerrar en ferris.",
+        "fridge": "Nevera", "fridge-desc": "Selección manual. 230V recomendado. 12V conduciendo.",
+        "toilet": "Inodoro", "toilet-desc": "Vaciar en sitios autorizados. DEBE estar vacío al devolver.",
+        "safety": "Seguridad", "safety-desc": "Extintor sobre mesa. Alarma gas bajo mesa.",
+        "return": "Devolución", "return-desc": "Diesel lleno, tanques vacíos. Tarifa 300 DKK + combustible.",
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
+        "v-safety": "", "v-return": ""
     }
 };
 
 function changeLanguage(lang) {
     document.querySelectorAll("[data-key]").forEach(elem => {
         const key = elem.getAttribute("data-key");
-        if (translations[lang][key]) {
-            elem.textContent = translations[lang][key];
-        }
+        if (translations[lang][key]) elem.textContent = translations[lang][key];
     });
+
+    document.getElementById("video-heat").src = translations[lang]["v-heat"];
+    document.getElementById("video-water").src = translations[lang]["v-water"];
+    document.getElementById("video-el").src = translations[lang]["v-el"];
+    document.getElementById("video-gas").src = translations[lang]["v-gas"];
+    document.getElementById("video-fridge").src = translations[lang]["v-fridge"];
+    document.getElementById("video-toilet").src = translations[lang]["v-toilet"];
+    document.getElementById("video-safety").src = translations[lang]["v-safety"];
+    document.getElementById("video-return").src = translations[lang]["v-return"];
 }
 
 const acc = document.getElementsByClassName("accordion");
