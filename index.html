@@ -42,61 +42,29 @@
 
     <h2 data-key="title-tech">🛠️ Teknisk Manual</h2>
 
-    <!-- Varme -->
     <button class="accordion"><span class="icon">🔥</span> <span data-key="heat">Varme</span></button>
-    <div class="panel">
-        <p data-key="heat-desc"></p>
-        <div class="video-wrapper"><iframe id="video-heat" src="" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="panel"><p data-key="heat-desc"></p><div class="video-wrapper"><iframe id="video-heat" src="" frameborder="0" allowfullscreen></iframe></div></div>
 
-    <!-- Vand -->
     <button class="accordion"><span class="icon">💧</span> <span data-key="water">Vand</span></button>
-    <div class="panel">
-        <p data-key="water-desc"></p>
-        <div class="video-wrapper"><iframe id="video-water" src="" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="panel"><p data-key="water-desc"></p><div class="video-wrapper"><iframe id="video-water" src="" frameborder="0" allowfullscreen></iframe></div></div>
 
-    <!-- El -->
     <button class="accordion"><span class="icon">⚡</span> <span data-key="el">El</span></button>
-    <div class="panel">
-        <p data-key="el-desc"></p>
-        <div class="video-wrapper"><iframe id="video-el" src="" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="panel"><p data-key="el-desc"></p><div class="video-wrapper"><iframe id="video-el" src="" frameborder="0" allowfullscreen></iframe></div></div>
 
-    <!-- Gas -->
     <button class="accordion"><span class="icon">🧪</span> <span data-key="gas">Gas</span></button>
-    <div class="panel">
-        <p data-key="gas-desc"></p>
-        <div class="video-wrapper"><iframe id="video-gas" src="" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="panel"><p data-key="gas-desc"></p><div class="video-wrapper"><iframe id="video-gas" src="" frameborder="0" allowfullscreen></iframe></div></div>
 
-    <!-- Køleskab -->
     <button class="accordion"><span class="icon">❄️</span> <span data-key="fridge">Køleskab</span></button>
-    <div class="panel">
-        <p data-key="fridge-desc"></p>
-        <div class="video-wrapper"><iframe id="video-fridge" src="" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="panel"><p data-key="fridge-desc"></p><div class="video-wrapper"><iframe id="video-fridge" src="" frameborder="0" allowfullscreen></iframe></div></div>
 
-    <!-- Toilet -->
     <button class="accordion"><span class="icon">🚽</span> <span data-key="toilet">Toilet</span></button>
-    <div class="panel">
-        <p data-key="toilet-desc"></p>
-        <div class="video-wrapper"><iframe id="video-toilet" src="" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="panel"><p data-key="toilet-desc"></p><div class="video-wrapper"><iframe id="video-toilet" src="" frameborder="0" allowfullscreen></iframe></div></div>
 
-    <!-- Sikkerhed -->
     <button class="accordion"><span class="icon">🛡️</span> <span data-key="safety">Sikkerhed</span></button>
-    <div class="panel">
-        <p data-key="safety-desc"></p>
-        <div class="video-wrapper"><iframe id="video-safety" src="" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="panel"><p data-key="safety-desc"></p></div>
 
-    <!-- Aflevering -->
     <button class="accordion"><span class="icon">🏁</span> <span data-key="return">Aflevering af bil</span></button>
-    <div class="panel">
-        <p data-key="return-desc"></p>
-        <div class="video-wrapper"><iframe id="video-return" src="" frameborder="0" allowfullscreen></iframe></div>
-    </div>
+    <div class="panel"><p data-key="return-desc"></p></div>
 </div>
 
 <script>
@@ -111,13 +79,12 @@ const translations = {
         "toilet": "Toilet", "toilet-desc": "Tømmes på godkendte pladser. Efter tømning påfyldes 2 l vand og kemi. SKAL være tømt ved aflevering.",
         "safety": "Sikkerhed", "safety-desc": "Ildslukker og førstehjælp er i skabet over bordet. Gasalarm findes under bordet.",
         "return": "Aflevering", "return-desc": "Dieseltanken skal være fyldt, toilet og gråvand tømt. Ellers gebyr på 300 kr. + brændstof.",
-        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
-        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
-        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
-        "v-safety": "", "v-return": ""
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
     },
     en: {
         "title-tech": "🛠️ Technical Manual",
@@ -129,13 +96,12 @@ const translations = {
         "toilet": "Toilet", "toilet-desc": "Empty at approved sites. Add chemicals after emptying. MUST be empty upon return.",
         "safety": "Safety", "safety-desc": "Extinguisher above table. Gas alarm under table.",
         "return": "Returning", "return-desc": "Diesel tank full, tanks empty. Fee 300 DKK + fuel costs.",
-        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
-        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
-        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
-        "v-safety": "", "v-return": ""
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
     },
     de: {
         "title-tech": "🛠️ Technisches Handbuch",
@@ -147,13 +113,12 @@ const translations = {
         "toilet": "Toilette", "toilet-desc": "An Fachstellen entleeren. MUSS bei Rückgabe leer sein.",
         "safety": "Sicherheit", "safety-desc": "Löscher im Schrank. Gasalarm unter dem Tisch.",
         "return": "Rückgabe", "return-desc": "Dieseltank voll, Tanks leer. Gebühr 300 DKK + Kraftstoff.",
-        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
-        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
-        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
-        "v-safety": "", "v-return": ""
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
     },
     fr: {
         "title-tech": "🛠️ Manuel Technique",
@@ -165,13 +130,12 @@ const translations = {
         "toilet": "Toilettes", "toilet-desc": "Vider sur sites autorisés. DOIT être vide au retour.",
         "safety": "Sécurité", "safety-desc": "Extincteur au-dessus table. Alarme gaz sous table.",
         "return": "Restitution", "return-desc": "Diesel plein, réservoirs vides. Frais 300 DKK + carburant.",
-        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
-        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
-        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
-        "v-safety": "", "v-return": ""
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
     },
     es: {
         "title-tech": "🛠️ Manual Técnico",
@@ -183,13 +147,12 @@ const translations = {
         "toilet": "Inodoro", "toilet-desc": "Vaciar en sitios autorizados. DEBE estar vacío al devolver.",
         "safety": "Seguridad", "safety-desc": "Extintor sobre mesa. Alarma gas bajo mesa.",
         "return": "Devolución", "return-desc": "Diesel lleno, tanques vacíos. Tarifa 300 DKK + combustible.",
-        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0?si=AkpdEZYUGZhUC2ND", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI?si=s5_qO2T_GMTe3LcW", 
-        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0?si=N-N3XWYGkO28xrtp", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=liVPa6QCjRPcCqXV", 
-        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM?si=sIfdZstM7olVbyfe", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q?si=tzny9rZUCD0GE2Yg",
-        "v-safety": "", "v-return": ""
+        "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
+        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
+        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
     }
 };
 
@@ -199,14 +162,15 @@ function changeLanguage(lang) {
         if (translations[lang][key]) elem.textContent = translations[lang][key];
     });
 
-    document.getElementById("video-heat").src = translations[lang]["v-heat"];
-    document.getElementById("video-water").src = translations[lang]["v-water"];
-    document.getElementById("video-el").src = translations[lang]["v-el"];
-    document.getElementById("video-gas").src = translations[lang]["v-gas"];
-    document.getElementById("video-fridge").src = translations[lang]["v-fridge"];
-    document.getElementById("video-toilet").src = translations[lang]["v-toilet"];
-    document.getElementById("video-safety").src = translations[lang]["v-safety"];
-    document.getElementById("video-return").src = translations[lang]["v-return"];
+    const ytParams = `?cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}`;
+
+    // Opdaterer kun videoer for de kategorier, der faktisk har dem
+    if (document.getElementById("video-heat")) document.getElementById("video-heat").src = translations[lang]["v-heat"] ? translations[lang]["v-heat"] + ytParams : "";
+    if (document.getElementById("video-water")) document.getElementById("video-water").src = translations[lang]["v-water"] ? translations[lang]["v-water"] + ytParams : "";
+    if (document.getElementById("video-el")) document.getElementById("video-el").src = translations[lang]["v-el"] ? translations[lang]["v-el"] + ytParams : "";
+    if (document.getElementById("video-gas")) document.getElementById("video-gas").src = translations[lang]["v-gas"] ? translations[lang]["v-gas"] + ytParams : "";
+    if (document.getElementById("video-fridge")) document.getElementById("video-fridge").src = translations[lang]["v-fridge"] ? translations[lang]["v-fridge"] + ytParams : "";
+    if (document.getElementById("video-toilet")) document.getElementById("video-toilet").src = translations[lang]["v-toilet"] ? translations[lang]["v-toilet"] + ytParams : "";
 }
 
 const acc = document.getElementsByClassName("accordion");
