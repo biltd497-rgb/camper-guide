@@ -20,9 +20,10 @@
         .icon { margin-right: 15px; font-size: 20px; }
         .panel { padding: 0 18px; display: none; background-color: white; overflow: hidden; border-left: 3px solid #ccc; margin-bottom: 10px; }
         
+        .video-title { font-weight: bold; margin-top: 15px; margin-bottom: 5px; color: #555; font-size: 14px; }
         .video-wrapper {
             position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-            max-width: 100%; background: #000; border-radius: 8px; margin: 15px 0;
+            max-width: 100%; background: #000; border-radius: 8px; margin-bottom: 15px;
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     </style>
@@ -46,7 +47,13 @@
     <div class="panel"><p data-key="heat-desc"></p><div class="video-wrapper"><iframe id="video-heat" src="" frameborder="0" allowfullscreen></iframe></div></div>
 
     <button class="accordion"><span class="icon">💧</span> <span data-key="water">Vand</span></button>
-    <div class="panel"><p data-key="water-desc"></p><div class="video-wrapper"><iframe id="video-water" src="" frameborder="0" allowfullscreen></iframe></div></div>
+    <div class="panel">
+        <p data-key="water-desc"></p>
+        <div class="video-title" data-key="v-title-fresh">💧 Påfyldning af ferskvand:</div>
+        <div class="video-wrapper"><iframe id="video-water" src="" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-title" data-key="v-title-grey">🚜 Tømning af gråvand:</div>
+        <div class="video-wrapper"><iframe id="video-grey" src="" frameborder="0" allowfullscreen></iframe></div>
+    </div>
 
     <button class="accordion"><span class="icon">⚡</span> <span data-key="el">El</span></button>
     <div class="panel"><p data-key="el-desc"></p><div class="video-wrapper"><iframe id="video-el" src="" frameborder="0" allowfullscreen></iframe></div></div>
@@ -73,6 +80,7 @@ const translations = {
         "title-tech": "🛠️ Teknisk Manual",
         "heat": "Varme", "heat-desc": "Gasfyret tændes ved drejeknappen. Varmt vand tændes 15 min. før brug.",
         "water": "Vand", "water-desc": "Ferskvandstanken (100 l) er fyldt ved udlevering. Gråvandstanken (100 l) SKAL være tømt ved aflevering.",
+        "v-title-fresh": "💧 Påfyldning af ferskvand (0-34 sek):", "v-title-grey": "🚜 Tømning af gråvand:",
         "el": "El", "el-desc": "12V-stik ved TV skal være samlet for WIFI/TV. Tryk WPS hvis router ikke lyser grønt. 230V kræver landstrøm.",
         "gas": "Gas", "gas-desc": "Gasflasken er placeret i skabet bagerst. Gassen SKAL være lukket ombord på færger.",
         "fridge": "Køleskab", "fridge-desc": "Vælg kilde manuelt. 230V anbefales ved landstrøm. 12V må kun bruges når motoren kører.",
@@ -80,16 +88,18 @@ const translations = {
         "safety": "Sikkerhed", "safety-desc": "Ildslukker og førstehjælp er i skabet over bordet. Gasalarm findes under bordet.",
         "return": "Aflevering", "return-desc": "Dieseltanken skal være fyldt, toilet og gråvand tømt. Ellers gebyr på 300 kr. + brændstof.",
         "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-water": "https://www.youtube.com/embed/zWXKLs3JeYk?start=0&end=34",
+        "v-grey": "https://www.youtube.com/embed/Xq7iLbOtcJk",
         "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=RecMVPGToOJlHYqy", // Det nye gas-link er opdateret her
         "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
+        "v-toilet": "https://www.youtube.com/embed/44Bg7tPdZ7s"
     },
     en: {
         "title-tech": "🛠️ Technical Manual",
         "heat": "Heating", "heat-desc": "Heater via control knob. Hot water 15 min. before use.",
         "water": "Water", "water-desc": "Fresh water tank is full. Grey water tank MUST be empty upon return.",
+        "v-title-fresh": "💧 Filling Fresh Water (0-34 sec):", "v-title-grey": "🚜 Emptying Grey Water:",
         "el": "Electricity", "el-desc": "12V plug for TV/WIFI. Press WPS if not green. 230V needs shore power.",
         "gas": "Gas", "gas-desc": "Cylinder in rear locker. Gas MUST be closed on ferries.",
         "fridge": "Fridge", "fridge-desc": "Manual select. 230V for shore power. 12V only while driving.",
@@ -97,16 +107,18 @@ const translations = {
         "safety": "Safety", "safety-desc": "Extinguisher above table. Gas alarm under table.",
         "return": "Returning", "return-desc": "Diesel tank full, tanks empty. Fee 300 DKK + fuel costs.",
         "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-water": "https://www.youtube.com/embed/zWXKLs3JeYk?start=0&end=34",
+        "v-grey": "https://www.youtube.com/embed/Xq7iLbOtcJk",
         "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=RecMVPGToOJlHYqy",
         "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
+        "v-toilet": "https://www.youtube.com/embed/44Bg7tPdZ7s"
     },
     de: {
         "title-tech": "🛠️ Technisches Handbuch",
         "heat": "Heizung", "heat-desc": "Heizung über Drehknopf. Warmwasser 15 Min. vor Gebrauch.",
         "water": "Wasser", "water-desc": "Frischwassertank voll. Grauwassertank MUSS bei Rückgabe leer sein.",
+        "v-title-fresh": "💧 Frischwasser auffüllen (0-34 Sek):", "v-title-grey": "🚜 Grauwasser entleeren:",
         "el": "Elektrizität", "el-desc": "12V-Stecker für TV/WIFI. 230V nur mit Landstrom.",
         "gas": "Gas", "gas-desc": "Gasflasche im Heck. MUSS auf Fähren geschlossen sein.",
         "fridge": "Kühlschrank", "fridge-desc": "Manuelle Wahl. 230V empfohlen. 12V nur während der Fahrt.",
@@ -114,16 +126,18 @@ const translations = {
         "safety": "Sicherheit", "safety-desc": "Löscher im Schrank. Gasalarm unter dem Tisch.",
         "return": "Rückgabe", "return-desc": "Dieseltank voll, Tanks leer. Gebühr 300 DKK + Kraftstoff.",
         "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-water": "https://www.youtube.com/embed/zWXKLs3JeYk?start=0&end=34",
+        "v-grey": "https://www.youtube.com/embed/Xq7iLbOtcJk",
         "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=RecMVPGToOJlHYqy",
         "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
+        "v-toilet": "https://www.youtube.com/embed/44Bg7tPdZ7s"
     },
     fr: {
         "title-tech": "🛠️ Manuel Technique",
         "heat": "Chauffage", "heat-desc": "Chauffage via bouton. Eau chaude 15 min avant usage.",
         "water": "Eau", "water-desc": "Eau propre plein. Eaux grises DOIT être vide au retour.",
+        "v-title-fresh": "💧 Remplissage d'eau propre (0-34 sec):", "v-title-grey": "🚜 Vidange des eaux grises:",
         "el": "Électricité", "el-desc": "Prise 12V pour TV/WIFI. 230V nécessite courant de quai.",
         "gas": "Gas", "gas-desc": "Bouteille à l'arrière. Fermer sur les ferries.",
         "fridge": "Frigo", "fridge-desc": "Sélection manuelle. 230V recommandé. 12V en roulant.",
@@ -131,16 +145,18 @@ const translations = {
         "safety": "Sécurité", "safety-desc": "Extincteur au-dessus table. Alarme gaz sous table.",
         "return": "Restitution", "return-desc": "Diesel plein, réservoirs vides. Frais 300 DKK + carburant.",
         "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-water": "https://www.youtube.com/embed/zWXKLs3JeYk?start=0&end=34",
+        "v-grey": "https://www.youtube.com/embed/Xq7iLbOtcJk",
         "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=RecMVPGToOJlHYqy",
         "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
+        "v-toilet": "https://www.youtube.com/embed/44Bg7tPdZ7s"
     },
     es: {
         "title-tech": "🛠️ Manual Técnico",
         "heat": "Calefacción", "heat-desc": "Calentador via mando. Agua caliente 15 min antes.",
         "water": "Agua", "water-desc": "Agua dulce lleno. Aguas grises DEBE estar vacío al devolver.",
+        "v-title-fresh": "💧 Llenado de agua limpia (0-34 seg):", "v-title-grey": "🚜 Vaciado de aguas grises:",
         "el": "Electricidad", "el-desc": "12V para TV/WIFI. 230V solo toma tierra.",
         "gas": "Gas", "gas-desc": "Bombona atrás. Cerrar en ferris.",
         "fridge": "Nevera", "fridge-desc": "Selección manual. 230V recomendado. 12V conduciendo.",
@@ -148,11 +164,12 @@ const translations = {
         "safety": "Seguridad", "safety-desc": "Extintor sobre mesa. Alarma gas bajo mesa.",
         "return": "Devolución", "return-desc": "Diesel lleno, tanques vacíos. Tarifa 300 DKK + combustible.",
         "v-heat": "https://www.youtube.com/embed/dbATN3pSxq0", 
-        "v-water": "https://www.youtube.com/embed/2klCxT37AbI", 
+        "v-water": "https://www.youtube.com/embed/zWXKLs3JeYk?start=0&end=34",
+        "v-grey": "https://www.youtube.com/embed/Xq7iLbOtcJk",
         "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM", 
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=RecMVPGToOJlHYqy",
         "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
-        "v-toilet": "https://www.youtube.com/embed/XFYeKAGmT5Q"
+        "v-toilet": "https://www.youtube.com/embed/44Bg7tPdZ7s"
     }
 };
 
@@ -162,15 +179,17 @@ function changeLanguage(lang) {
         if (translations[lang][key]) elem.textContent = translations[lang][key];
     });
 
-    const ytParams = `?cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}`;
-
-    // Opdaterer kun videoer for de kategorier, der faktisk har dem
-    if (document.getElementById("video-heat")) document.getElementById("video-heat").src = translations[lang]["v-heat"] ? translations[lang]["v-heat"] + ytParams : "";
-    if (document.getElementById("video-water")) document.getElementById("video-water").src = translations[lang]["v-water"] ? translations[lang]["v-water"] + ytParams : "";
-    if (document.getElementById("video-el")) document.getElementById("video-el").src = translations[lang]["v-el"] ? translations[lang]["v-el"] + ytParams : "";
-    if (document.getElementById("video-gas")) document.getElementById("video-gas").src = translations[lang]["v-gas"] ? translations[lang]["v-gas"] + ytParams : "";
-    if (document.getElementById("video-fridge")) document.getElementById("video-fridge").src = translations[lang]["v-fridge"] ? translations[lang]["v-fridge"] + ytParams : "";
-    if (document.getElementById("video-toilet")) document.getElementById("video-toilet").src = translations[lang]["v-toilet"] ? translations[lang]["v-toilet"] + ytParams : "";
+    document.querySelectorAll("iframe").forEach(iframe => {
+        const id = iframe.id;
+        const key = "v-" + id.replace("video-", "");
+        if (translations[lang][key]) {
+            const baseSrc = translations[lang][key];
+            const separator = baseSrc.includes('?') ? '&' : '?';
+            iframe.src = baseSrc + separator + `cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}`;
+        } else {
+            iframe.src = "";
+        }
+    });
 }
 
 const acc = document.getElementsByClassName("accordion");
