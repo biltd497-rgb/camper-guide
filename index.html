@@ -91,7 +91,7 @@ const translations = {
         "v-water": "https://www.youtube.com/embed/zWXKLs3JeYk?start=0&end=34",
         "v-grey": "https://www.youtube.com/embed/Xq7iLbOtcJk",
         "v-el": "https://www.youtube.com/embed/1GfF7hoCFH0", 
-        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=RecMVPGToOJlHYqy", // Det nye gas-link er opdateret her
+        "v-gas": "https://www.youtube.com/embed/Ck2GTyZiDXM?si=RecMVPGToOJlHYqy", 
         "v-fridge": "https://www.youtube.com/embed/5527JbG_HRM", 
         "v-toilet": "https://www.youtube.com/embed/44Bg7tPdZ7s"
     },
@@ -174,18 +174,27 @@ const translations = {
 };
 
 function changeLanguage(lang) {
+    // 1. Opdater alle tekstfelter på skærmen
     document.querySelectorAll("[data-key]").forEach(elem => {
         const key = elem.getAttribute("data-key");
-        if (translations[lang][key]) elem.textContent = translations[lang][key];
+        if (translations[lang] && translations[lang][key]) {
+            elem.textContent = translations[lang][key];
+        }
     });
+
+    // 2. Opdater videolinkene og indstil YouTubes undertekst-sprog
+    const ytParams = `cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}`;
 
     document.querySelectorAll("iframe").forEach(iframe => {
         const id = iframe.id;
         const key = "v-" + id.replace("video-", "");
-        if (translations[lang][key]) {
-            const baseSrc = translations[lang][key];
+        
+        // Vi slår altid op i 'da'-listen for at hente selve grundlinket, 
+        // så koden aldrig fejler selvom et link mangler i udlandslisten.
+        if (translations["da"][key]) {
+            const baseSrc = translations["da"][key];
             const separator = baseSrc.includes('?') ? '&' : '?';
-            iframe.src = baseSrc + separator + `cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}`;
+            iframe.src = baseSrc + separator + ytParams;
         } else {
             iframe.src = "";
         }
@@ -201,6 +210,7 @@ for (let i = 0; i < acc.length; i++) {
     });
 }
 
+// Start appen op på dansk
 changeLanguage('da');
 </script>
 
